@@ -1,5 +1,10 @@
 venv
 **/migrations
 **/__pycache__
+data
+django_site/staticfiles
+django_site/media
 django_site/db.sqlite3
+django_site/.secrets
+.env
 .vscode

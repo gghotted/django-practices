@@ -9,12 +9,22 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import json
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+SECRET_DIR = BASE_DIR / '.secrets'
+
+COMMON_SECRET_FILE = SECRET_DIR / 'common.json'
+COMMON_SECRET = json.loads(COMMON_SECRET_FILE.read_text())
+
+DEBUG_SECRET_FILE = SECRET_DIR / 'debug.json'
+DEBUG_SECRET = json.loads(DEBUG_SECRET_FILE.read_text())
+
+DEPLOY_SECRET_FILE = SECRET_DIR / 'deploy.json'
+DEPLOY_SECRET = json.loads(DEPLOY_SECRET_FILE.read_text())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -117,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
