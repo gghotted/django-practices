@@ -30,7 +30,7 @@ DEPLOY_SECRET = json.loads(DEPLOY_SECRET_FILE.read_text())
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(m1bmpinw+hm@qwsn)h!^t2rjf#2pn2elpcl&jy)7!a(b1bgdx'
+SECRET_KEY = COMMON_SECRET['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
