@@ -1,6 +1,5 @@
 from rest_framework.generics import (ListCreateAPIView,
                                      RetrieveUpdateDestroyAPIView)
-from rest_framework.permissions import IsAuthenticated
 
 from post import serializers
 from post.models import Post
@@ -8,11 +7,6 @@ from post.models import Post
 
 class PostListCreateAPIView(ListCreateAPIView):
     queryset = Post.objects.all()
-
-    def get_permissions(self):
-        if self.request.method == 'POST':
-            return [IsAuthenticated()]
-        return []
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
@@ -22,11 +16,6 @@ class PostListCreateAPIView(ListCreateAPIView):
 
 class PostDetailUpdateDestroyAPIViewlAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
-
-    def get_permissions(self):
-        if self.request.method in ('POST', 'PUT', 'PATCH', 'DELETE'):
-            return [IsAuthenticated()]
-        return []
     
     def get_serializer_class(self):
         if self.request.method in ('POST', 'PUT', 'PATCH', 'DELETE'):
