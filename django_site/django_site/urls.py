@@ -20,6 +20,7 @@ from rest_framework_simplejwt.views import (TokenBlacklistView,
                                             TokenRefreshView, TokenVerifyView)
 
 from django_site.views import MeView
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,5 @@ urlpatterns = [
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('token/blacklist/', TokenBlacklistView.as_view(), name='token_blacklist'),
     path('me/', MeView.as_view(), name='me'),
+    path('post/', include('post.urls')),
 ]
