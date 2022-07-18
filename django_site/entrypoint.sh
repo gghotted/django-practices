@@ -3,4 +3,5 @@ python manage.py makemigrations && \
 python manage.py migrate && \
 echo yes | python manage.py collectstatic && \
 
+daphne -b 0.0.0.0 -p 8001 django_site.asgi:application & \
 gunicorn --log-level=DEBUG --bind 0.0.0.0:8000 --timeout 1200 django_site.wsgi.deploy:application

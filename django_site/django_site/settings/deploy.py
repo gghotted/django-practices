@@ -7,3 +7,12 @@ ALLOWED_HOSTS = DEPLOY_SECRET['ALLOWED_HOSTS']
 WSGI_APPLICATION = 'django_site.wsgi.deploy.application'
 
 DATABASES = {'default': DEPLOY_SECRET['DATABASES']}
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('redis', 6379)],
+        }
+    }
+}
