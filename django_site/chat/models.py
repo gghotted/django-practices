@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
+class Room(models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
+    participant_num = models.PositiveBigIntegerField()
