@@ -2,4 +2,5 @@ venv
 **/migrations
 **/__pycache__
 django_site/db.sqlite3
+django_site/media
 .vscode
