@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8">
+                <title>CKEditor</title>
+                <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+        </head>
+        <body>
+                title: <input name="title"><br>
+                <textarea name="content"></textarea>
+                <script>
+                        document.cookie = 'Authorization=Bearer {{token}}'
+                        CKEDITOR.replace( 'content' );
+                        // CKEDITOR.config.filebrowserBrowseUrl = '/ckeditor/browse/'
+                        CKEDITOR.config.filebrowserUploadUrl = '/ckeditor/upload/'
+                        CKEDITOR.config.fileTools_requestHeaders = {
+                                'Authorization': 'Bearer {{token}}'
+                        }
+                </script>
+        </body>
+</html>

@@ -13,14 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from post import views
 from rest_framework_simplejwt.views import (TokenBlacklistView,
                                             TokenObtainPairView,
                                             TokenRefreshView, TokenVerifyView)
 
 from django_site.views import MeView
-from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +32,6 @@ urlpatterns = [
     path('token/blacklist/', TokenBlacklistView.as_view(), name='token_blacklist'),
     path('me/', MeView.as_view(), name='me'),
     path('post/', include('post.urls')),
-]
+
+    path('ckeditor/upload/', views.ImageUploadAPIView.as_view()),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
