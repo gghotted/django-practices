@@ -21,7 +21,9 @@
                 callbacks: {
                     onImageUpload: function(files) {
                         var data = new FormData();
-                        data.append('files', files[0])
+                        for (let i = 0; i < files.length; i++) {
+                            data.append('files', files[i]);
+                        }
                         $.ajax({
                             type: 'POST',
                             url: '/summernote-upload/',
@@ -31,8 +33,10 @@
                             processData: false,
                             method: 'POST',
                             success: function(data) {
-                                var file = data.files[0]
-                                $('#summernote').summernote('insertImage', file.url, file.name);
+                                for (let i = 0; i < data.files.length; i++) {
+                                    const file = data.files[i];
+                                    $('#summernote').summernote('insertImage', file.url, file.name);
+                                }
                             }
                         })
                         }
