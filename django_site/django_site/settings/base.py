@@ -47,8 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'rest_framework',
     'post',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+AWS_LOCATION = 'test'
+AWS_S3_SECURE_URL = False
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_FILE_OVERWRITE = False
+
+AWS_S3_ACCESS_KEY_ID = COMMON_SECRET['AWS_S3_ACCESS_KEY_ID']
+AWS_S3_SECRET_ACCESS_KEY = COMMON_SECRET['AWS_S3_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = COMMON_SECRET['AWS_STORAGE_BUCKET_NAME']

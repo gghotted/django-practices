@@ -1,3 +1,5 @@
+from django.http.response import JsonResponse
+from django.views.generic import TemplateView
 from rest_framework.generics import (ListCreateAPIView,
                                      RetrieveUpdateDestroyAPIView)
 
@@ -22,3 +24,12 @@ class PostDetailUpdateDestroyAPIViewlAPIView(RetrieveUpdateDestroyAPIView):
             return serializers.PostCreateSerializer
         return serializers.PostSerializer
 
+
+class PostCreateView(TemplateView):
+    template_name = 'post/post_form.html'
+
+    def post(self, request):
+        title = request.POST['title']
+        content = request.POST['content']
+        Post.objects.create(title=title, content=content)
+        return JsonResponse({'success': True})
