@@ -9,7 +9,7 @@ docker-compose를 위한 변수 파일
 - POSTGRES_PASSWORD: user password
 - NGINX_SERVER_NAME: servername (localhost)
 
-## ./django_site/.secrets
+## ./django_embed/.secrets
 
 ### common.json
 

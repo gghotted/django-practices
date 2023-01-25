@@ -2,9 +2,9 @@ venv
 **/migrations
 **/__pycache__
 data
-django_site/staticfiles
-django_site/media
-django_site/db.sqlite3
-django_site/.secrets
+django_embed/staticfiles
+django_embed/media
+django_embed/db.sqlite3
+django_embed/.secrets
 .env
 .vscode

@@ -1,5 +1,5 @@
 """
-WSGI config for django_site project.
+WSGI config for django_embed project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.debug')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.deploy')
 
 application = get_wsgi_application()

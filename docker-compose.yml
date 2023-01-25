@@ -10,8 +10,8 @@ services:
       - SERVER_NAME=${NGINX_SERVER_NAME}
     volumes:
       - ./nginx:/etc/nginx/conf.d/
-      - ./django_site/staticfiles:/staticfiles
-      - ./django_site/media:/media
+      - ./django_embed/staticfiles:/staticfiles
+      - ./django_embed/media:/media
     depends_on:
       - web
   
@@ -20,9 +20,9 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: web
-    command: bash -c "cd django_site && ./entrypoint.sh"
+    command: bash -c "cd django_embed && ./entrypoint.sh"
     volumes:
-      - ./django_site:/django_site
+      - ./django_embed:/django_embed
     depends_on:
       - postgres
   
